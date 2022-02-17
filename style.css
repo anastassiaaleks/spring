@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #191e1e;
+}
+header{
+    border-bottom: 1px solid #ebf2f2;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 20px 8px;
+    max-width: 1140px;
+    margin: 0 auto;
+    align-items: center;
+}
+.spring-logo>img{
+    height: 48px;
+    max-width: 250px;
+}
+.nav-list{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 705px;
+}
+.nav-list>li{
+    margin-bottom: 3px;
+    font-weight: 500;
+    padding: 8px;
+    font-weight: 700;
+    font-size: .9375rem;
+}
+.nav-list>li:hover{
+    color: rgb(16, 201, 16);
+}
