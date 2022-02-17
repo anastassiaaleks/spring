@@ -11,9 +11,10 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: 8px 20px 8px;
-    max-width: 1140px;
+    max-width: 1180px;
     margin: 0 auto;
     align-items: center;
+    box-sizing: border-box;
 }
 .spring-logo>img{
     height: 48px;
@@ -34,4 +35,79 @@ nav{
 }
 .nav-list>li:hover{
     color: rgb(16, 201, 16);
+}
+main{
+    padding-top: 80px;
+}
+.main__info{
+    max-width: 1180px;
+    padding: 0 20px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    box-sizing: border-box;
+}
+.main__info>h1{
+    font-size: 3.75rem;
+    line-height: 1em;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    font-weight: 600;
+}
+.main__info>p{
+    font-size: 1.5rem;
+    line-height: 1.7em;
+    color: #333;
+    padding-right: 125px;
+}
+.projects-section{
+    background-color: #ebf2f2;
+    padding: 50px 0;
+}
+.projects-section>div{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+}
+.projects-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: auto;
+    max-width: 916px;
+}
+.project-list__item{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 0;
+    border: 1px solid #d9e9e9;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 48.5%;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    transition: all .2s,transform .2s;
+    cursor: pointer;
+}
+.project-list__item:hover{
+    position: relative;
+    top: -5px;
+    box-shadow:0 10px 20px 0 rgba(108,135,135,.2)
+}
+.project-list__img{
+    max-width: 18.5%;
+}
+.project-list__img>img{
+    height: 60px;
+    max-width: 100%;
+}
+.project-list__description{
+    width: 76.5%;
+}
+.project-list__description>p{
+    line-height: 1.7em;
+    margin: 12px 0;
 }
