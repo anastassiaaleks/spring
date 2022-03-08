@@ -18,7 +18,6 @@ class Main{
             </div>
             <section class="projects-section">
                 <div>
-                    <input type="text" class="">
                     <div class="projects-list"></div>
                 </div>
             </section>
