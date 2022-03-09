@@ -18,15 +18,27 @@ class Main{
             </div>
             <section class="projects-section">
                 <div>
+                    <div class="projects-search">
+                        <input type="text" class="search-input">
+                        <button class="del-btn">x</button>
+                    </div>
                     <div class="projects-list"></div>
                 </div>
             </section>
         `
-        this.render()
+        this.renderProjects()
+        this.searchProjects()
         return this.element
     }
-    render(){
-        this.data.forEach((elem)=>{
+    renderProjects(inputData=''){
+        let projectsList=this.element.querySelector('.projects-list')
+        let newData=this.data.filter((e)=> e.title.toLowerCase().includes(inputData) || e.description.toLowerCase().includes(inputData))
+        
+        projectsList.innerHTML=''
+
+        if (newData.length===0){ projectsList.innerHTML=`<p>No results</p>` }
+
+        newData.map((elem)=>{
             let project=document.createElement('div')
             project.classList.add('project-list__item')
             project.innerHTML=`
@@ -38,8 +50,21 @@ class Main{
                     <p>${elem.description}</p>
                 </div>
             `
-            this.element.querySelector('.projects-list').appendChild(project)
+            projectsList.appendChild(project)
         })
+    }
+    searchProjects(){
+        let searchInput=this.element.querySelector('.search-input')
+        let delBtn=this.element.querySelector('.del-btn')
+
+        searchInput.addEventListener('input', ()=>{
+            this.renderProjects(searchInput.value.toLowerCase())
+        })
+        delBtn.addEventListener('click', ()=>{
+            searchInput.value=''
+            this.renderProjects()
+        })
+        
     }
     init(){
         return this.create()

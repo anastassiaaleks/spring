@@ -1,12 +1,13 @@
 class Header{
     constructor(){
         this.data=[
-            {title: 'Why Spring <i class="fa-solid fa-angle-down"></i> ', list: ['Overview', 'Microservices', 'Reactive', 'Event Driven', 'Cloud', 'Web Applications', 'Serverless', 'Batch']},
-            {title: 'Learn <i class="fa-solid fa-angle-down"></i> ', list: ['Overview', 'Quickstart', 'Guides', 'Blog']},
-            {title: 'Projects <i class="fa-solid fa-angle-down"></i> ', list: ['Overview', 'Spring Boot', 'Spring Framework', 'Spring Cloud', 'Spring Cloud Data Flow', 'Spring Data', 'Spring Integration', 'Spring Batch', 'Spring Security', 'View all projects', 'Development Tools', 'Spring Tools 4', 'Spring Initializr <i class="fa-solid fa-arrow-up-right-from-square"></i>']},
-            {title: '<a href="#">Training</a>', list: []},
-            {title: '<a href="#">Support</a>', list: []},
-            {title: 'Community <i class="fa-solid fa-angle-down"></i> ', list: ['Overview', 'Events', 'Team']},
+            //{title: 'Why Spring <i class="fa-solid fa-angle-down"></i> ', list: ['Overview', 'Microservices', 'Reactive', 'Event Driven', 'Cloud', 'Web Applications', 'Serverless', 'Batch']},
+            {title: 'Why Spring', list: ['Overview', 'Microservices', 'Reactive', 'Event Driven', 'Cloud', 'Web Applications', 'Serverless', 'Batch']},
+            {title: 'Learn', list: ['Overview', 'Quickstart', 'Guides', 'Blog']},
+            {title: 'Projects', list: ['Overview', 'Spring Boot', 'Spring Framework', 'Spring Cloud', 'Spring Cloud Data Flow', 'Spring Data', 'Spring Integration', 'Spring Batch', 'Spring Security', 'View all projects', 'Development Tools', 'Spring Tools 4', 'Spring Initializr <i class="fa-solid fa-arrow-up-right-from-square"></i>']},
+            {title: 'Training', list: []},
+            {title: 'Support', list: []},
+            {title: 'Community', list: ['Overview', 'Events', 'Team']},
         ]
     }
     create(){
@@ -15,7 +16,6 @@ class Header{
         this.element.innerHTML=`
             <nav>
                 <a class="spring-logo" href="#"><img src="./img/spring-logo.svg" alt="Spring"></a>
-                
                 <ul class="nav-list"></ul>
                 <div class="nav_burger-menu">
                     <span></span>
@@ -29,7 +29,7 @@ class Header{
     addNav(){
         this.data.forEach((elem)=>{
             let navItem=document.createElement('li')
-            navItem.innerHTML= !!elem.list && elem.list.length>0 ? `${elem.title} <ul class="nav-list__drop"></ul>` : `${elem.title}`
+            navItem.innerHTML= !!elem.list && elem.list.length>0 ? `${elem.title} <i class="fa-solid fa-angle-down"></i> <ul class="nav-list__drop"></ul>` : `<a href="#">${elem.title}</a>`
             this.element.querySelector('.nav-list').appendChild(navItem)
 
             elem.list.forEach((e)=>{
