@@ -40,10 +40,14 @@ nav{
     font-weight: 600;
     cursor: default;
     width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .fa-angle-down{
     font-size: 12px;
     margin-left: 3px;
+    display: inline-block;
 }
 .nav-list>li:first-child{
     padding: 26px 32px 22px 5px;
@@ -80,18 +84,18 @@ nav{
 .nav-list__drop>li:not(:last-child){
     margin-bottom: 10px;
 }
-.nav-list--view-all{
+/* .nav-list--view-all{
     color: #086dc3;
 }
 .nav-list--dev-tools{
     text-transform: uppercase;
     font-size: .85rem;
     margin-top: 24px;
-}
-.fa-arrow-up-right-from-square{
+} */
+/* .fa-arrow-up-right-from-square{
     font-size: 13px;
     margin-left: 3px;
-}
+} */
 
 .nav_burger-menu {
     cursor: pointer;
@@ -243,7 +247,6 @@ main{
         padding: 5px 20px;
     }
     .nav-list{
-        visibility: hidden;
         z-index:1;
         min-width:100%;
         min-height:100%;
@@ -257,30 +260,67 @@ main{
         padding-top:20px;
         transition: all 0.3s ease-in-out;
         justify-content: flex-start;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         width: 100%;        
         flex-direction: column;
+        overflow: scroll;
+    }
+    .nav-list__drop{
+        transition: all 0.3s ease-in-out;
 
     }
     .nav-list>li, .nav-list>li>a{
         color: #fff;
     }
     .nav-list>li:not(:first-child), .nav-list>li:first-child{
-        width: 80%;
+        width: 90%;
         text-align: left;
         margin: 0 auto;
         padding: 15px 0px;
-        border-bottom: .5px solid rgb(255, 255, 255);
+        border-bottom: .2px solid #98afae;
+    }
+    
+    .fa-angle-down{
+        color: #fff;
+        font-size: 1.5rem;
     }
     .nav-list__drop{
         position: relative;
         top: 15px;
+        padding: 15px 0px;
+        border-radius: 0;
+        background-color: rgb(108 135 135 / 0%);
+        box-shadow: none;
+        border-top: .2px solid #98afae;
+    }
+    .nav-list__drop>li>a{
+        color: #98afae;
+        font-size: 1.3rem;
     }
     .nav-list>li:hover>.nav-list__drop{
         display: none;
     }
     .nav_burger-menu{
         display: block;
+    }
+    .nav-list>li{
+        flex-wrap: wrap;
+    }
+    .nav-list>li.active-drop>.nav-list__drop{
+        display: block;
+        width: 100%;
+        animation: showDrop .3s linear forwards;
+    }
+    @keyframes showDrop{
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    .nav-list>li.active-drop>i{
+        transform: rotate(180deg);
     }
     .spring-logo>img{
         height: 30px;

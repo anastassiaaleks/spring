@@ -1,7 +1,6 @@
 class Header{
     constructor(){
         this.data=[
-            //{title: 'Why Spring <i class="fa-solid fa-angle-down"></i> ', list: ['Overview', 'Microservices', 'Reactive', 'Event Driven', 'Cloud', 'Web Applications', 'Serverless', 'Batch']},
             {title: 'Why Spring', list: ['Overview', 'Microservices', 'Reactive', 'Event Driven', 'Cloud', 'Web Applications', 'Serverless', 'Batch']},
             {title: 'Learn', list: ['Overview', 'Quickstart', 'Guides', 'Blog']},
             {title: 'Projects', list: ['Overview', 'Spring Boot', 'Spring Framework', 'Spring Cloud', 'Spring Cloud Data Flow', 'Spring Data', 'Spring Integration', 'Spring Batch', 'Spring Security', 'View all projects', 'Development Tools', 'Spring Tools 4', 'Spring Initializr <i class="fa-solid fa-arrow-up-right-from-square"></i>']},
@@ -17,9 +16,7 @@ class Header{
             <nav>
                 <a class="spring-logo" href="#"><img src="./img/spring-logo.svg" alt="Spring"></a>
                 <ul class="nav-list"></ul>
-                <div class="nav_burger-menu">
-                    <span></span>
-                </div>
+                <div class="nav_burger-menu"> <span></span> </div>
             </nav>
         `
         this.addNav()
@@ -40,6 +37,12 @@ class Header{
                     if (navDropList[j]){ navDropList[j].appendChild(navItemList) }
                 }
             })
+        })
+        this.element.querySelector('.nav-list').addEventListener('click', (elem)=>{
+            this.element.querySelectorAll('.nav-list')[0].childNodes.forEach((e)=>{
+                if (e !== elem.target.closest('li')){ e.classList.remove('active-drop') }
+            })
+            elem.target.closest('li').classList.toggle('active-drop')
         })
     }
     burgerMenu(){
