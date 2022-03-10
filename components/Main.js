@@ -11,23 +11,45 @@ class Main{
     }
     create(){
         this.element=document.createElement('main')
-        this.element.innerHTML=`
-            <div class="main__info">
-                <h1>Projects</h1>
-                <p>From configuration to security, web apps to big data—whatever the infrastructure needs of your application may be, there is a Spring Project to help you build it. Start small and use just what you need—Spring is modular by design.</p>
-            </div>
-            <section class="projects-section">
-                <div>
-                    <div class="projects-search">
-                        <input type="text" class="search-input" placeholder='Search...'>
-                        <button class="del-btn">x</button>
-                    </div>
-                    <div class="projects-list"></div>
-                </div>
-            </section>
-        `
+
+        let mainInfo=document.createElement('div'),
+            mainTitle=document.createElement('h1'),
+            mainP=document.createElement('p'),
+            mainSection=document.createElement('div'),
+            projectsContainer=document.createElement('div'),
+            projectsSearch=document.createElement('div'),
+            searchInput=document.createElement('input'),
+            searchButton=document.createElement('button'),
+            projectsList=document.createElement('div')
+
+        mainInfo.classList.add('main__info')
+        mainSection.classList.add('projects-section')
+        projectsSearch.classList.add('projects-search')
+        searchInput.classList.add('search-input')
+        searchButton.classList.add('del-btn')
+        projectsList.classList.add('projects-list')
+
+        searchInput.setAttribute('type', 'text')
+        searchInput.setAttribute('placeholder', 'Search...')
+
+        mainTitle.insertAdjacentText('afterbegin', 'Projects')
+        mainP.insertAdjacentText('afterbegin', 'From configuration to security, web apps to big data—whatever the infrastructure needs of your application may be, there is a Spring Project to help you build it. Start small and use just what you need—Spring is modular by design.')
+        searchButton.insertAdjacentText('afterbegin', 'x')
+
+        mainInfo.insertAdjacentElement('afterbegin', mainTitle)
+        mainInfo.insertAdjacentElement('beforeend', mainP)
+        mainSection.insertAdjacentElement('afterbegin', projectsContainer)
+        projectsContainer.insertAdjacentElement('afterbegin', projectsSearch)
+        projectsContainer.insertAdjacentElement('beforeend', projectsList)
+        projectsSearch.appendChild(searchInput)
+        projectsSearch.appendChild(searchButton)
+
+        this.element.insertAdjacentElement('afterbegin', mainInfo)
+        this.element.insertAdjacentElement('beforeend', mainSection)
+
         this.renderProjects()
         this.searchProjects()
+        
         return this.element
     }
     renderProjects(inputData=''){
@@ -39,17 +61,30 @@ class Main{
         if (newData.length===0){ projectsList.innerHTML=`<p>No results</p>` }
 
         newData.map((elem)=>{
-            let project=document.createElement('div')
+            let project=document.createElement('div'),
+                projectImgDiv=document.createElement('div'),
+                projectImg=document.createElement('img'),
+                projectDescription=document.createElement('div'),
+                descriptionTitle=document.createElement('h3'),
+                descriptionP=document.createElement('p')
+
+
             project.classList.add('project-list__item')
-            project.innerHTML=`
-                <div class="project-list__img">
-                    <img src=${elem.img} alt="">
-                </div>
-                <div class="project-list__description">
-                    <h3>${elem.title}</h3>
-                    <p>${elem.description}</p>
-                </div>
-            `
+            projectImgDiv.classList.add('project-list__img')
+            projectDescription.classList.add('project-list__description')
+
+            projectImg.setAttribute('src', `${elem.img}`)
+
+            descriptionTitle.insertAdjacentText('afterbegin', `${elem.title}`)
+            descriptionP.insertAdjacentText('afterbegin', `${elem.description}`)
+
+            projectImgDiv.appendChild(projectImg)
+            projectDescription.appendChild(descriptionTitle)
+            projectDescription.appendChild(descriptionP)
+
+            project.appendChild(projectImgDiv)
+            project.appendChild(projectDescription)
+
             projectsList.appendChild(project)
         })
     }
