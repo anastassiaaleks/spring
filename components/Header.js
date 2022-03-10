@@ -54,9 +54,6 @@ class Header{
             burgerNav.classList.toggle("overlay")
         })
     }
-    init(){
-        return this.create()
-    }
 }
-const header = new Header().init()
+const header = new Header().create()
 export {header}

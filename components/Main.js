@@ -19,7 +19,7 @@ class Main{
             <section class="projects-section">
                 <div>
                     <div class="projects-search">
-                        <input type="text" class="search-input">
+                        <input type="text" class="search-input" placeholder='Search...'>
                         <button class="del-btn">x</button>
                     </div>
                     <div class="projects-list"></div>
@@ -64,11 +64,7 @@ class Main{
             searchInput.value=''
             this.renderProjects()
         })
-        
-    }
-    init(){
-        return this.create()
     }
 }
-const main = new Main().init()
+const main = new Main().create()
 export {main}
